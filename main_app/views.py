@@ -1,9 +1,6 @@
 from django.shortcuts import render
 
-finches = [
-  {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
-  {'name': 'Sachi', 'breed': 'calico', 'description': 'gentle and loving', 'age': 2},
-]
+from .models import Finch
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -12,6 +9,13 @@ def about(request):
     return render(request, 'about.html')
 
 def finches_index(request):
+
+    finches = Finch.objects.all()
+    #responding to the client, injecting the cats we found from the database into our cats/index.html template
     return render(request, 'finches/index.html', {
         'finches': finches
     })
+
+def finches_detail(request, finch_id):
+    finch = Finch.objects.get(id=finch_id)
+    return render(request, 'finches/detail.html', {'finch': finch })
