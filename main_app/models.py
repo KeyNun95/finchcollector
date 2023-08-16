@@ -8,8 +8,8 @@ class Finch(models.Model):
     description = models.TextField(max_length=250)
     age = models.IntegerField()
 
-def __str__(self):
-    return f'{self.name} ({self.id})'
+    def __str__(self):
+        return f'{self.name} ({self.id})'
 
-def get_absolute_url(self):
-    return reverse('detail', kwargs={'cat_id': self.id})
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'finch_id': self.id})
