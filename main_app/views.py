@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Finch
 from .forms import FeedingForm
+
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -23,6 +24,7 @@ def finches_detail(request, finch_id):
     feeding_form = FeedingForm()
     return render(request, 'finches/detail.html', {'finch': finch, 'feeding_form': feeding_form })
 
+#this finch_id are defined on the request in the path url as params
 def add_feeding(request, finch_id):
   # create a ModelForm instance using the data in request.POST
   form = FeedingForm(request.POST)

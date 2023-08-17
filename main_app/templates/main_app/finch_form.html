@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<!-- 'object' is the thing we are editing. What this means is that if the object
+is there then proceed with Edit -->
 {% if object %}
     <h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
 {% else %}
